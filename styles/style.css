@@ -106,5 +106,20 @@ main section:first-child ul li {
 
 main section:last-child {
   flex: 8;
-  padding: 20px 20px;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+main section:last-child div:first-child {
+  flex: 7;
+  border-right: solid 1px rgb(226, 224, 224);
+  padding: 20px;
+}
+
+main section:last-child div:last-child {
+  flex: 3;
+  background-color: #fff;
+  padding: 20px;
 }
