@@ -25,7 +25,62 @@
       </section>
       <section>
         <p>Dahsboard</p>
-        <button>Mange widgets</button>
+        <button id="add-data-btn">Add New Data</button>
+
+        <div id="data-modal" class="modal">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Add New Transaction</h3>
+            <form id="transaction-form">
+              <label for="date">Date:</label>
+              <input type="date" id="date" name="date" required />
+
+              <label for="transaction">Transaction:</label>
+              <input
+                type="text"
+                id="transaction"
+                name="transaction"
+                placeholder="Enter transaction"
+                required
+              />
+
+              <label for="amount">Amount:</label>
+              <input
+                type="number"
+                id="amount"
+                name="amount"
+                placeholder="Enter amount"
+                required
+              />
+
+              <label for="tag">Tag:</label>
+              <input
+                type="text"
+                id="tag"
+                name="tag"
+                placeholder="Enter tag"
+                required
+              />
+
+              <label for="account">Account:</label>
+              <input
+                type="text"
+                id="account"
+                name="account"
+                placeholder="Enter account"
+                required
+              />
+
+              <label for="status">Status:</label>
+              <select id="status" name="status" required>
+                <option value="completed">Completed</option>
+                <option value="pending">Pending</option>
+              </select>
+
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
       </section>
     </header>
     <main>
@@ -52,21 +107,32 @@
           <div class="badge">
             <div class="badge_contain">
               <div>
-                <p>Net income</p>
+                <p>Net Income</p>
                 <h4>$18,190.00</h4>
                 <p>+12% vs last month</p>
               </div>
-              <div><img src="images/wallet.png" alt="" /></div>
+              <div><img src="images/wallet.png" alt="Net Income" /></div>
             </div>
             <div class="badge_contain">
               <div>
-                <p>Net income</p>
-                <h4>$18,190.00</h4>
-                <p>+12% vs last month</p>
+                <p>Total Expenses</p>
+                <h4>$5,320.00</h4>
+                <p>-4% vs last month</p>
               </div>
-              <div><img src="images/wallet.png" alt="" /></div>
+              <div>
+                <img src="images/transaction.png" alt="Total Expenses" />
+              </div>
+            </div>
+            <div class="badge_contain">
+              <div>
+                <p>Savings</p>
+                <h4>$1,500.00</h4>
+                <p>+20% vs last month</p>
+              </div>
+              <div><img src="images/wallet.png" alt="Savings" /></div>
             </div>
           </div>
+
           <div id="chart-section">
             <div class="chart-top">
               <select name="budget-category" id="budget-category">
@@ -142,5 +208,6 @@
     <script src="javascript/script.js"></script>
     <script src="javascript/chart.js"></script>
     <script src="javascript/button.js"></script>
+    <script src="javascript/modal.js"></script>
   </body>
 </html>
