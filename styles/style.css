@@ -224,7 +224,7 @@ main section:first-child ul li {
 
 #expense-chart {
   height: 300px !important;
-  width: 100%;
+  width: 100% !important;
 }
 
 .transaction-section {
@@ -266,12 +266,16 @@ main section:first-child ul li {
   height: 16px;
 }
 
-.transactions-table table {
+.transactions-table-container {
+  height: 200px; /* Set the desired height for the table */
+  overflow-y: auto; /* Allow vertical scrolling when content exceeds the container */
+}
+
+.transactions-table {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .transactions-table th,
@@ -308,6 +312,14 @@ main section:first-child ul li {
 .transactions-table .status-pending {
   color: orange;
   font-weight: bold;
+}
+
+.transactions-table .income {
+  color: green;
+}
+
+.transactions-table .expense {
+  color: red;
 }
 
 .modal {
@@ -358,13 +370,4 @@ main section:first-child ul li {
   font-weight: bold;
   cursor: pointer;
   color: #333;
-}
-
-/* Add color styles for Income and Expense rows */
-.transactions-table .income {
-  color: green;
-}
-
-.transactions-table .expense {
-  color: red;
 }
