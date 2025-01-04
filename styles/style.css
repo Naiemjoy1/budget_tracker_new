@@ -7,12 +7,12 @@
 header {
   max-width: 1200px;
   margin: auto;
-  display: flex;
-  height: auto;
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+  grid-template-rows: auto;
 }
 
 header section:first-child {
-  flex: 2;
   border-right: solid 1px rgb(226, 224, 224);
   border-bottom: solid 1px rgb(226, 224, 224);
   padding: 10px 20px;
@@ -38,7 +38,7 @@ header section:first-child p {
 }
 
 header section:last-child {
-  flex: 8;
+  /* flex: 8; */
   padding: 10px 0px;
   border-bottom: solid 1px rgb(226, 224, 224);
   display: flex;
@@ -65,7 +65,9 @@ header section:last-child button {
 main {
   max-width: 1200px;
   margin: auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+  grid-template-rows: auto;
   height: calc(100vh - 62px);
 }
 
@@ -103,17 +105,6 @@ main section:first-child ul li {
   align-items: center;
   margin-bottom: 10px;
   font-size: 16px;
-}
-
-main section:last-child {
-  flex: 8;
-  display: flex;
-  justify-content: space-between;
-}
-
-.contain_left {
-  flex: 8;
-  border-right: solid 1px rgb(226, 224, 224);
 }
 
 .contain_right {
@@ -157,4 +148,80 @@ main section:last-child {
   background-color: white;
   padding: 8px;
   border-radius: 6px;
+}
+
+.chart-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contain_right_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contain_right_top h4 {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.contain_right_top p {
+  font-size: 8px;
+}
+
+#chart-section {
+  padding: 20px;
+  border-bottom: solid 2px rgb(226, 224, 224);
+}
+
+.chart-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chart-top select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+}
+
+.chart-top-right {
+  display: flex;
+  gap: 10px;
+}
+
+.chart-top-right button {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.chart-top-right button:hover {
+  background-color: #7578d3;
+  color: white;
+  border-color: #7578d3;
+}
+
+.chart-top-right button.active {
+  background-color: #7578d3;
+  color: white;
+  border-color: #7578d3;
+}
+
+#expense-chart {
+  height: 300px !important;
+  width: 100%;
 }
