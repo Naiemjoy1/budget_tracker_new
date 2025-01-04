@@ -39,7 +39,7 @@ header section:first-child p {
 
 header section:last-child {
   /* flex: 8; */
-  padding: 10px 0px;
+  padding: 10px 20px;
   border-bottom: solid 1px rgb(226, 224, 224);
   display: flex;
   justify-content: space-between;
@@ -50,7 +50,7 @@ header section:last-child p {
   margin: 0;
   font-size: 16px;
   font-weight: 400;
-  padding-left: 20px;
+  /* padding-left: 20px; */
 }
 
 header section:last-child button {
@@ -224,4 +224,87 @@ main section:first-child ul li {
 #expense-chart {
   height: 300px !important;
   width: 100%;
+}
+
+.transaction-section {
+  padding: 20px;
+  /* background-color: #f8f7fa; */
+  /* border-radius: 10px; */
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.transaction-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.transaction-top p {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-container input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.search-container img {
+  position: absolute;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+}
+
+.transactions-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.transactions-table th,
+.transactions-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.transactions-table th {
+  background-color: #f1f1f1;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.transactions-table td {
+  font-size: 14px;
+}
+
+.transactions-table tr:last-child td {
+  border-bottom: none;
+}
+
+.transactions-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.transactions-table .status-completed {
+  color: green;
+  font-weight: bold;
+}
+
+.transactions-table .status-pending {
+  color: orange;
+  font-weight: bold;
 }
