@@ -359,3 +359,12 @@ main section:first-child ul li {
   cursor: pointer;
   color: #333;
 }
+
+/* Add color styles for Income and Expense rows */
+.transactions-table .income {
+  color: green;
+}
+
+.transactions-table .expense {
+  color: red;
+}

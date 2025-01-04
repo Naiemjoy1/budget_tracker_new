@@ -33,51 +33,34 @@
             <h3>Add New Transaction</h3>
             <form id="transaction-form">
               <label for="date">Date:</label>
-              <input type="date" id="date" name="date" required />
+              <input type="date" id="date" required />
 
-              <label for="transaction">Transaction:</label>
-              <input
-                type="text"
-                id="transaction"
-                name="transaction"
-                placeholder="Enter transaction"
-                required
-              />
+              <label for="transaction">Transaction Description:</label>
+              <input type="text" id="transaction" required />
 
               <label for="amount">Amount:</label>
-              <input
-                type="number"
-                id="amount"
-                name="amount"
-                placeholder="Enter amount"
-                required
-              />
+              <input type="number" id="amount" required />
 
               <label for="tag">Tag:</label>
-              <input
-                type="text"
-                id="tag"
-                name="tag"
-                placeholder="Enter tag"
-                required
-              />
+              <input type="text" id="tag" />
 
               <label for="account">Account:</label>
-              <input
-                type="text"
-                id="account"
-                name="account"
-                placeholder="Enter account"
-                required
-              />
+              <input type="text" id="account" />
 
               <label for="status">Status:</label>
-              <select id="status" name="status" required>
+              <select id="status">
                 <option value="completed">Completed</option>
                 <option value="pending">Pending</option>
               </select>
 
-              <button type="submit">Submit</button>
+              <!-- Dropdown to select Income or Expense -->
+              <label for="type">Transaction Type:</label>
+              <select id="type">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+              </select>
+
+              <button type="submit">Add Transaction</button>
             </form>
           </div>
         </div>
@@ -105,7 +88,7 @@
       <section class="contain">
         <div class="contain_left">
           <div class="badge">
-            <div class="badge_contain">
+            <div id="net-income" class="badge_contain">
               <div>
                 <p>Net Income</p>
                 <h4>$18,190.00</h4>
@@ -113,7 +96,7 @@
               </div>
               <div><img src="images/wallet.png" alt="Net Income" /></div>
             </div>
-            <div class="badge_contain">
+            <div class="badge_contain" id="total-expenses">
               <div>
                 <p>Total Expenses</p>
                 <h4>$5,320.00</h4>
@@ -123,7 +106,7 @@
                 <img src="images/transaction.png" alt="Total Expenses" />
               </div>
             </div>
-            <div class="badge_contain">
+            <div class="badge_contain" id="savings">
               <div>
                 <p>Savings</p>
                 <h4>$1,500.00</h4>
