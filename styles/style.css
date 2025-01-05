@@ -12,7 +12,7 @@ header {
   grid-template-rows: auto;
 }
 
-header section:first-child {
+.header-left {
   border-right: solid 1px rgb(226, 224, 224);
   border-bottom: solid 1px rgb(226, 224, 224);
   padding: 10px 20px;
@@ -22,23 +22,22 @@ header section:first-child {
   gap: 10px;
 }
 
-header section:first-child img {
+.header-left img {
   width: 35px;
   height: 35px;
   object-fit: cover;
 }
 
-header section:first-child h4 {
+.header-left h4 {
   margin: 0;
   font-size: 15px;
 }
-header section:first-child p {
+.header-left p {
   margin: 0;
   font-size: 12px;
 }
 
-header section:last-child {
-  /* flex: 8; */
+.header-right {
   padding: 10px 20px;
   border-bottom: solid 1px rgb(226, 224, 224);
   display: flex;
@@ -46,18 +45,16 @@ header section:last-child {
   align-items: center;
 }
 
-header section:last-child p {
+.header-right p {
   margin: 0;
   font-size: 16px;
   font-weight: 400;
-  /* padding-left: 20px; */
 }
 
-header section:last-child button {
+.header-right button {
   background: #7578d3;
   padding: 4px 14px;
   border-radius: 5px;
-  /* box-shadow: 1px 1px 18px 11px rgba(0, 0, 0, 0.1); */
   border: none;
   font-size: 14px;
   color: white;
@@ -72,7 +69,7 @@ main {
   height: calc(100vh - 62px);
 }
 
-main section:first-child {
+.main-left {
   flex: 2;
   border-right: solid 1px rgb(226, 224, 224);
   padding: 20px 20px;
@@ -83,24 +80,24 @@ main section:first-child {
   gap: 40px;
 }
 
-main section:first-child div {
+.main-left div {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 10px;
 }
 
-main section:first-child p {
+.main-left p {
   font-size: 14px;
   font-weight: 600;
 }
 
-main section:first-child ul img {
+.main-left ul img {
   width: 20px;
   height: 20px;
 }
 
-main section:first-child ul li {
+.main-left ul li {
   display: flex;
   gap: 12px;
   align-items: center;
@@ -229,9 +226,6 @@ main section:first-child ul li {
 
 .transaction-section {
   padding: 20px;
-  /* background-color: #f8f7fa; */
-  /* border-radius: 10px; */
-  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
 }
 
 .transaction-top {
@@ -357,17 +351,18 @@ main section:first-child ul li {
 
 .modal-content form label {
   display: block;
-  margin: 10px 0 5px;
 }
 
 .modal-content form input,
 .modal-content form select,
 .modal-content form button {
   width: 100%;
-  padding: 8px;
+  padding: 8px 10px;
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
 }
 
 .close-btn {
@@ -400,4 +395,101 @@ input#start-date,
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 14px;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  header {
+    /* max-width: 1200px; */
+    margin: auto;
+    display: flex;
+    /* grid-template-columns: 2fr 8fr; */
+    /* grid-template-rows: auto; */
+    flex-direction: column;
+  }
+
+  .header-left {
+    /* border-right: solid 1px rgb(226, 224, 224); */
+    /* border-bottom: solid 1px rgb(226, 224, 224); */
+    padding: 10px 20px;
+    background-color: #f8f7fa;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .header-right {
+    padding: 10px 20px;
+    /* border-bottom: solid 1px rgb(226, 224, 224); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  main {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 0 20px;
+  }
+
+  main ul {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    flex-direction: row;
+  }
+
+  .contain {
+    padding: 20px;
+  }
+
+  .main-left {
+    flex: 2;
+    background-color: #f8f7fa;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0px;
+  }
+
+  .badge {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    border-bottom: none;
+    flex-direction: column;
+  }
+
+  .badge_contain {
+    flex: 5;
+    border: solid 2px #7578d3;
+    padding: 20px;
+    background-color: #f7f5ff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .chart-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+  }
+
+  .transaction-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+  }
 }
