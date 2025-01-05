@@ -27,7 +27,6 @@
         <p>Dahsboard</p>
         <button id="add-data-btn">Add New Data</button>
 
-        <!-- Add New Transaction Modal -->
         <div id="add-data-modal" class="modal">
           <div class="modal-content">
             <span class="close-btn">&times;</span>
@@ -67,7 +66,6 @@
           </div>
         </div>
 
-        <!-- Edit Transaction Modal -->
         <div id="edit-data-modal" class="modal">
           <div class="modal-content">
             <span class="close-btn">&times;</span>
@@ -145,7 +143,7 @@
                 <p>-4% vs last month</p>
               </div>
               <div>
-                <img src="images/transaction.png" alt="Total Expenses" />
+                <img src="images/expenses.png" alt="Total Expenses" />
               </div>
             </div>
             <div class="badge_contain" id="savings">
@@ -154,7 +152,7 @@
                 <h4>$1,500.00</h4>
                 <p>+20% vs last month</p>
               </div>
-              <div><img src="images/wallet.png" alt="Savings" /></div>
+              <div><img src="images/jar.png" alt="Savings" /></div>
             </div>
           </div>
 
@@ -183,12 +181,11 @@
           <div class="transaction-section">
             <div class="transaction-top">
               <p>Recent Transactions</p>
-              <div>
-                <!-- Start Date Input -->
+              <div class="date-range">
                 <input type="date" id="start-date" />
 
-                <!-- End Date Input -->
                 <input type="date" id="end-date" />
+                <button>Clear</button>
               </div>
               <div class="search-container">
                 <input

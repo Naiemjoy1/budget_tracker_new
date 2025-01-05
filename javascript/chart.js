@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let expenseChart = new Chart(chartCanvas, {
     type: "line",
     data: {
-      labels: [], // Days of the month
+      labels: [], 
       datasets: [
         {
           label: "Income",
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
           label: "Savings",
-          data: [], // Savings data based on Income - Expenses
+          data: [], 
           borderColor: "rgba(153, 102, 255, 1)",
           borderWidth: 2,
           fill: false,
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let incomeData = Array(daysInMonth).fill(0);
     let expenseData = Array(daysInMonth).fill(0);
-    let savingsData = Array(daysInMonth).fill(0); // Initialize savingsData array
+    let savingsData = Array(daysInMonth).fill(0); 
     let investmentData = Array(daysInMonth).fill(0);
     let debtData = Array(daysInMonth).fill(0);
 
@@ -110,32 +110,27 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         const dayIndex = date.getDate() - 1;
 
-        // Handle Income
         if (transaction.type === "income") {
           incomeData[dayIndex] += parseFloat(transaction.amount);
         }
 
-        // Handle Expenses
         if (transaction.type === "expense") {
           expenseData[dayIndex] += parseFloat(transaction.amount);
         }
 
-        // Handle Investments
         if (transaction.type === "investment") {
           investmentData[dayIndex] += parseFloat(transaction.amount);
         }
 
-        // Handle Debt
         if (transaction.type === "debt") {
           debtData[dayIndex] += parseFloat(transaction.amount);
         }
       }
     });
 
-    // Calculate Savings as the running balance of income - expenses
-    savingsData[0] = incomeData[0] - expenseData[0]; // Set first day's savings
+    savingsData[0] = incomeData[0] - expenseData[0]; 
     for (let i = 1; i < daysInMonth; i++) {
-      savingsData[i] = savingsData[i - 1] + incomeData[i] - expenseData[i]; // Cumulative savings
+      savingsData[i] = savingsData[i - 1] + incomeData[i] - expenseData[i]; 
     }
 
     return {
@@ -154,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const allData = [
       dailyData.incomeData,
       dailyData.expenseData,
-      dailyData.savingsData,  // Add savingsData to chart
+      dailyData.savingsData,  
       dailyData.investmentData,
       dailyData.debtData,
     ];

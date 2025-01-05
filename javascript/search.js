@@ -1,15 +1,14 @@
 //search.js
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("search-input");  
-  const startDateInput = document.getElementById("start-date");  // Input for start date
-  const endDateInput = document.getElementById("end-date");      // Input for end date
+  const startDateInput = document.getElementById("start-date");  
+  const endDateInput = document.getElementById("end-date");      
 
-  // Function to handle the search input
   searchInput.addEventListener("input", () => {
       filterTransactions();
   });
 
-  // Function to handle the date range change
+
   startDateInput.addEventListener("change", () => {
       filterTransactions();
   });
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
       filterTransactions();
   });
 
-  // Function to filter transactions
   function filterTransactions() {
       const searchTerm = searchInput.value.toLowerCase();
       const startDate = startDateInput.value ? new Date(startDateInput.value) : null;
@@ -28,16 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const filteredTransactions = storedTransactions.filter(transaction => {
           const transactionDate = new Date(transaction.date);
 
-          // Check if the transaction matches the search term
           const matchesSearchTerm = (
-              transaction.transaction.toLowerCase().includes(searchTerm) || // Transaction
-              transaction.amount.toString().toLowerCase().includes(searchTerm) || // Amount
-              transaction.tag.toLowerCase().includes(searchTerm) || // Tag
-              transaction.account.toLowerCase().includes(searchTerm) || // Account
-              transaction.status.toLowerCase().includes(searchTerm) // Status
+              transaction.transaction.toLowerCase().includes(searchTerm) || 
+              transaction.amount.toString().toLowerCase().includes(searchTerm) || 
+              transaction.tag.toLowerCase().includes(searchTerm) || 
+              transaction.account.toLowerCase().includes(searchTerm) || 
+              transaction.status.toLowerCase().includes(searchTerm) 
           );
 
-          // Check if the transaction is within the date range
           const matchesDateRange = (
               (!startDate || transactionDate >= startDate) && 
               (!endDate || transactionDate <= endDate)
@@ -49,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
       updateTransactionTable(filteredTransactions);
   }
 
-  // Function to update the table with filtered transactions
   function updateTransactionTable(transactions) {
       const table = document.querySelector(".transactions-table tbody");
       table.innerHTML = "";
@@ -73,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
           table.appendChild(row);
       });
 
-      // Reattach event listeners for Edit/Delete buttons
       document.querySelectorAll(".edit-btn").forEach((button) => {
           button.addEventListener("click", handleEditTransaction);
       });
@@ -83,13 +77,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Handle Edit Transaction Button Click
   function handleEditTransaction(event) {
-      // Add your edit logic here
+      
   }
 
-  // Handle Delete Transaction Button Click
   function handleDeleteTransaction(event) {
-      // Add your delete logic here
   }
 });

@@ -3,16 +3,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const editForm = document.getElementById("edit-transaction-form");
   const addDataModal = document.getElementById("add-data-modal");
   const editDataModal = document.getElementById("edit-data-modal");
-  let editingTransactionId = null;  // To keep track of the transaction being edited
-  let currentBalance = 0;  // Add variable to store the balance
+  let editingTransactionId = null;  
+  let currentBalance = 0;  
   
-  // Open Add Transaction Modal
   const addDataBtn = document.getElementById("add-data-btn");
   addDataBtn.addEventListener("click", () => {
     addDataModal.style.display = "flex";
   });
 
-  // Close Modals when clicking outside the modal box
   window.addEventListener("click", (e) => {
     if (e.target === addDataModal) {
       addDataModal.style.display = "none";
@@ -22,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Close Modals when clicking the close button
   document.querySelectorAll(".close-btn").forEach((closeBtn) => {
     closeBtn.addEventListener("click", () => {
       addDataModal.style.display = "none";
@@ -30,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Add Transaction
   addForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -51,15 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
       type: addForm.type.value,
     };
 
-    // Adjust balance based on transaction type
     if (transactionData.type === "income") {
       currentBalance += amount;
     } else if (transactionData.type === "expense") {
       currentBalance -= amount;
     } else if (transactionData.type === "debt") {
-      currentBalance += amount;  // Add debt to balance (net income)
+      currentBalance += amount; 
     } else if (transactionData.type === "investment") {
-      currentBalance -= amount;  // Subtract investment from balance (expenses)
+      currentBalance -= amount;  
     }
 
     let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
@@ -69,22 +64,20 @@ document.addEventListener("DOMContentLoaded", () => {
     updateTransactionTable(transactions);
     updateFinancialSummary(transactions);
 
-    // Reset the form and hide the modal
     addForm.reset();
-    addDataModal.style.display = "none";  // Close the modal
+    addDataModal.style.display = "none";  
   });
 
-  // Handle Edit Button Click
+  
   document.querySelectorAll(".edit-btn").forEach((button) => {
     button.addEventListener("click", handleEditTransaction);
   });
 
-  // Edit Transaction
+  
   const storedTransactions = JSON.parse(localStorage.getItem("transactions")) || [];
   updateTransactionTable(storedTransactions);
   updateFinancialSummary(storedTransactions);
 
-  // Handle Update Transaction Form Submission
   editForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -119,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
     editingTransactionId = null;
   });
 
-  // Update Transaction Table
   function updateTransactionTable(transactions) {
     const table = document.querySelector(".transactions-table tbody");
     table.innerHTML = "";
@@ -143,7 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
       table.appendChild(row);
     });
 
-    // Reattach event listeners for Edit/Delete buttons
     document.querySelectorAll(".edit-btn").forEach((button) => {
       button.addEventListener("click", handleEditTransaction);
     });
@@ -153,7 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Handle Edit Transaction Button Click
   function handleEditTransaction(event) {
     const transactionId = parseInt(event.target.dataset.id);
     let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
@@ -168,12 +158,11 @@ document.addEventListener("DOMContentLoaded", () => {
       editForm["edit-status"].value = transactionToEdit.status;
       editForm["edit-type"].value = transactionToEdit.type;
 
-      editingTransactionId = transactionId;  // Set the ID of the transaction being edited
-      editDataModal.style.display = "flex";   // Show the Edit Modal
+      editingTransactionId = transactionId;  
+      editDataModal.style.display = "flex";   
     }
   }
 
-  // Handle Delete Transaction Button Click
   function handleDeleteTransaction(event) {
     const transactionId = parseInt(event.target.dataset.id);
     let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
@@ -184,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateFinancialSummary(transactions);
   }
 
-  // Update Financial Summary
+ 
   function updateFinancialSummary(transactions) {
     let netIncome = 0;
     let totalExpenses = 0;
@@ -195,9 +184,9 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (transaction.type === "expense") {
         totalExpenses += transaction.amount;
       } else if (transaction.type === "debt") {
-        netIncome += transaction.amount;  // Debt is added to net income
+        netIncome += transaction.amount;  
       } else if (transaction.type === "investment") {
-        totalExpenses += transaction.amount;  // Investment is subtracted from expenses
+        totalExpenses += transaction.amount;  
       }
     });
 
@@ -207,4 +196,15 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("total-expenses").querySelector("h4").textContent = `$${totalExpenses.toFixed(2)}`;
     document.getElementById("savings").querySelector("h4").textContent = `$${savings.toFixed(2)}`;
   }
+
+  const clearButton = document.querySelector(".date-range button");
+
+  clearButton.addEventListener("click", () => {
+    document.getElementById("start-date").value = "";
+    document.getElementById("end-date").value = "";
+
+    const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+    updateTransactionTable(transactions);
+    updateFinancialSummary(transactions);
+  });
 });

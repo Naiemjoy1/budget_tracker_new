@@ -379,3 +379,25 @@ main section:first-child ul li {
   cursor: pointer;
   color: #333;
 }
+
+input#start-date,
+#end-date {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.date-range {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.date-range button {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
