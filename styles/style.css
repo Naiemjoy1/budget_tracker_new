@@ -170,8 +170,10 @@ main {
 }
 
 #chart-section {
-  padding: 20px;
-  border-bottom: solid 2px rgb(226, 224, 224);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 300px; /* Default height for small screens */
 }
 
 .chart-top {
@@ -220,8 +222,8 @@ main {
 }
 
 #expense-chart {
-  height: 300px !important;
-  width: 100% !important;
+  max-width: 100%;
+  height: auto;
 }
 
 .transaction-section {
@@ -491,5 +493,9 @@ input#start-date,
     align-items: center;
     margin-bottom: 20px;
     flex-direction: column;
+  }
+
+  #chart-section {
+    height: 500px; /* Height for tablets */
   }
 }

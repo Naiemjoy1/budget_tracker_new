@@ -1,4 +1,3 @@
-// chart.js
 document.addEventListener("DOMContentLoaded", () => {
   const chartCategorySelect = document.getElementById("budget-category");
   const chartCanvas = document.getElementById("expense-chart");
@@ -7,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let expenseChart = new Chart(chartCanvas, {
     type: "line",
     data: {
-      labels: [], 
+      labels: [],
       datasets: [
         {
           label: "Income",
@@ -25,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
           label: "Savings",
-          data: [], 
+          data: [],
           borderColor: "rgba(153, 102, 255, 1)",
           borderWidth: 2,
           fill: false,
@@ -48,24 +47,52 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false, // Allow dynamic resizing
+      plugins: {
+        legend: {
+          position: "top",
+          labels: {
+            font: {
+              size: 10, // Adjust legend font size
+            },
+          },
+        },
+        tooltip: {
+          bodyFont: {
+            size: 10, // Adjust tooltip font size
+          },
+        },
+      },
       scales: {
         x: {
           title: {
             display: true,
             text: "Date",
+            font: {
+              size: 12, // Adjust font size for x-axis
+            },
           },
           ticks: {
-            maxRotation: 90,
-            minRotation: 45,
+            maxRotation: 45,
+            minRotation: 0, // Reduce rotation for smaller screens
+            font: {
+              size: 10, // Adjust tick font size
+            },
           },
         },
         y: {
           title: {
             display: true,
             text: "Amount ($)",
+            font: {
+              size: 12, // Adjust font size for y-axis
+            },
           },
           ticks: {
             beginAtZero: true,
+            font: {
+              size: 10, // Adjust tick font size
+            },
           },
         },
       },
@@ -98,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let incomeData = Array(daysInMonth).fill(0);
     let expenseData = Array(daysInMonth).fill(0);
-    let savingsData = Array(daysInMonth).fill(0); 
+    let savingsData = Array(daysInMonth).fill(0);
     let investmentData = Array(daysInMonth).fill(0);
     let debtData = Array(daysInMonth).fill(0);
 
@@ -128,9 +155,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    savingsData[0] = incomeData[0] - expenseData[0]; 
+    savingsData[0] = incomeData[0] - expenseData[0];
     for (let i = 1; i < daysInMonth; i++) {
-      savingsData[i] = savingsData[i - 1] + incomeData[i] - expenseData[i]; 
+      savingsData[i] = savingsData[i - 1] + incomeData[i] - expenseData[i];
     }
 
     return {
@@ -149,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const allData = [
       dailyData.incomeData,
       dailyData.expenseData,
-      dailyData.savingsData,  
+      dailyData.savingsData,
       dailyData.investmentData,
       dailyData.debtData,
     ];
