@@ -1,3 +1,4 @@
+//button.js
 const chartButtons = document.querySelectorAll(".chart-top-right button");
 const categoryDropdown = document.getElementById("budget-category");
 

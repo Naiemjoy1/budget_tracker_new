@@ -27,13 +27,22 @@
         <p>Dahsboard</p>
         <button id="add-data-btn">Add New Data</button>
 
-        <div id="data-modal" class="modal">
+        <!-- Add New Transaction Modal -->
+        <div id="add-data-modal" class="modal">
           <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h3>Add New Transaction</h3>
-            <form id="transaction-form">
+            <form id="add-transaction-form">
               <label for="date">Date:</label>
               <input type="date" id="date" required />
+
+              <label for="type">Transaction Type:</label>
+              <select id="type">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+                <option value="debt">Debt</option>
+                <option value="investment">Investment</option>
+              </select>
 
               <label for="transaction">Transaction Description:</label>
               <input type="text" id="transaction" required />
@@ -53,14 +62,45 @@
                 <option value="pending">Pending</option>
               </select>
 
-              <!-- Dropdown to select Income or Expense -->
-              <label for="type">Transaction Type:</label>
-              <select id="type">
+              <button type="submit">Add Transaction</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Edit Transaction Modal -->
+        <div id="edit-data-modal" class="modal">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Edit Transaction</h3>
+            <form id="edit-transaction-form">
+              <label for="edit-date">Date:</label>
+              <input type="date" id="edit-date" required />
+
+              <label for="edit-type">Transaction Type:</label>
+              <select id="edit-type">
                 <option value="income">Income</option>
                 <option value="expense">Expense</option>
               </select>
 
-              <button type="submit">Add Transaction</button>
+              <label for="edit-transaction">Transaction Description:</label>
+              <input type="text" id="edit-transaction" required />
+
+              <label for="edit-amount">Amount:</label>
+              <input type="number" id="edit-amount" required />
+
+              <label for="edit-tag">Tag:</label>
+              <input type="text" id="edit-tag" />
+
+              <label for="edit-account">Account:</label>
+              <input type="text" id="edit-account" />
+
+              <label for="edit-status">Status:</label>
+              <select id="edit-status">
+                <option value="completed">Completed</option>
+                <option value="pending">Pending</option>
+              </select>
+
+              <button type="submit">Update Transaction</button>
             </form>
           </div>
         </div>
@@ -141,6 +181,13 @@
           <div class="transaction-section">
             <div class="transaction-top">
               <p>Recent Transactions</p>
+              <div>
+                <!-- Start Date Input -->
+                <input type="date" id="start-date" />
+
+                <!-- End Date Input -->
+                <input type="date" id="end-date" />
+              </div>
               <div class="search-container">
                 <input
                   type="text"
@@ -163,7 +210,6 @@
                     <th>Actions</th>
                   </tr>
                 </thead>
-
                 <tbody>
                   <tr>
                     <td>2025-01-03</td>
