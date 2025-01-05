@@ -1,27 +1,28 @@
+//search.js
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("search-input");  
   const startDateInput = document.getElementById("start-date");  // Input for start date
   const endDateInput = document.getElementById("end-date");      // Input for end date
 
   // Function to handle the search input
-  searchInput.addEventListener("input", (e) => {
+  searchInput.addEventListener("input", () => {
       filterTransactions();
   });
 
   // Function to handle the date range change
-  startDateInput.addEventListener("change", (e) => {
+  startDateInput.addEventListener("change", () => {
       filterTransactions();
   });
 
-  endDateInput.addEventListener("change", (e) => {
+  endDateInput.addEventListener("change", () => {
       filterTransactions();
   });
 
   // Function to filter transactions
   function filterTransactions() {
       const searchTerm = searchInput.value.toLowerCase();
-      const startDate = new Date(startDateInput.value);
-      const endDate = new Date(endDateInput.value);
+      const startDate = startDateInput.value ? new Date(startDateInput.value) : null;
+      const endDate = endDateInput.value ? new Date(endDateInput.value) : null;
       const storedTransactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
       const filteredTransactions = storedTransactions.filter(transaction => {
@@ -29,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // Check if the transaction matches the search term
           const matchesSearchTerm = (
-              transaction.date.toLowerCase().includes(searchTerm) || // Date
               transaction.transaction.toLowerCase().includes(searchTerm) || // Transaction
               transaction.amount.toString().toLowerCase().includes(searchTerm) || // Amount
               transaction.tag.toLowerCase().includes(searchTerm) || // Tag

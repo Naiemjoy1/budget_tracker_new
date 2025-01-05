@@ -322,6 +322,14 @@ main section:first-child ul li {
   color: red;
 }
 
+.transactions-table .debt {
+  color: green;
+}
+
+.transactions-table .investment {
+  color: red;
+}
+
 .modal {
   display: none;
   position: fixed;

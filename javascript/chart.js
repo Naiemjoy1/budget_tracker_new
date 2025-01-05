@@ -1,4 +1,4 @@
-//chart.js
+// chart.js
 document.addEventListener("DOMContentLoaded", () => {
   const chartCategorySelect = document.getElementById("budget-category");
   const chartCanvas = document.getElementById("expense-chart");
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let expenseChart = new Chart(chartCanvas, {
     type: "line",
     data: {
-      labels: [], 
+      labels: [], // Days of the month
       datasets: [
         {
           label: "Income",
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
           label: "Savings",
-          data: [],
+          data: [], // Savings data based on Income - Expenses
           borderColor: "rgba(153, 102, 255, 1)",
           borderWidth: 2,
           fill: false,
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let incomeData = Array(daysInMonth).fill(0);
     let expenseData = Array(daysInMonth).fill(0);
-    let savingsData = Array(daysInMonth).fill(0);
+    let savingsData = Array(daysInMonth).fill(0); // Initialize savingsData array
     let investmentData = Array(daysInMonth).fill(0);
     let debtData = Array(daysInMonth).fill(0);
 
@@ -109,35 +109,34 @@ document.addEventListener("DOMContentLoaded", () => {
         date.getMonth() === currentMonth
       ) {
         const dayIndex = date.getDate() - 1;
-    
+
+        // Handle Income
         if (transaction.type === "income") {
           incomeData[dayIndex] += parseFloat(transaction.amount);
         }
-    
+
+        // Handle Expenses
         if (transaction.type === "expense") {
           expenseData[dayIndex] += parseFloat(transaction.amount);
         }
-    
-        if (transaction.type === "income" || transaction.type === "expense") {
-          savingsData[dayIndex] += parseFloat(transaction.amount);
-        }
-    
-        if (
-          transaction.tag &&
-          transaction.tag.toLowerCase().includes("investment")
-        ) {
+
+        // Handle Investments
+        if (transaction.type === "investment") {
           investmentData[dayIndex] += parseFloat(transaction.amount);
         }
-    
-        if (
-          transaction.tag &&
-          transaction.tag.toLowerCase().includes("debt")
-        ) {
+
+        // Handle Debt
+        if (transaction.type === "debt") {
           debtData[dayIndex] += parseFloat(transaction.amount);
         }
       }
     });
-    
+
+    // Calculate Savings as the running balance of income - expenses
+    savingsData[0] = incomeData[0] - expenseData[0]; // Set first day's savings
+    for (let i = 1; i < daysInMonth; i++) {
+      savingsData[i] = savingsData[i - 1] + incomeData[i] - expenseData[i]; // Cumulative savings
+    }
 
     return {
       labels,
@@ -155,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const allData = [
       dailyData.incomeData,
       dailyData.expenseData,
-      dailyData.savingsData,
+      dailyData.savingsData,  // Add savingsData to chart
       dailyData.investmentData,
       dailyData.debtData,
     ];
