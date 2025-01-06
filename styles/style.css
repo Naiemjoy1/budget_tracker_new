@@ -488,6 +488,7 @@ input#start-date,
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     transition: left 0.3s ease-in-out;
     z-index: 1000;
+    display: block;
   }
 
   .sidebar ul li a {
@@ -693,6 +694,7 @@ input#start-date,
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     transition: left 0.3s ease-in-out;
+    display: block;
     z-index: 1000;
   }
 
