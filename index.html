@@ -24,7 +24,31 @@
         </div>
       </section>
       <section class="header-right">
-        <p>Dahsboard</p>
+        <div id="hamburger-icon" class="hamburger-icon">☰</div>
+
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+          <span class="close-sidebar">&times;</span>
+          <div class="tabs">
+            <div class="tab-top">
+              <p>GENERAL</p>
+              <ul>
+                <li><img src="images/collage.png" alt="" />Dashboard</li>
+                <li><img src="images/transaction.png" alt="" />Transaction</li>
+                <li><img src="images/wallet.png" alt="" />Account</li>
+                <li><img src="images/insight.png" alt="" />Insights</li>
+              </ul>
+            </div>
+            <div class="tab-bottom">
+              <p>SUPPORT</p>
+              <ul>
+                <li><img src="images/settings.png" alt="" />Settings</li>
+                <li><img src="images/logout.png" alt="" />Log Out</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p class="title">Dahsboard</p>
         <button id="add-data-btn">Add New Data</button>
 
         <div id="add-data-modal" class="modal">
@@ -197,11 +221,7 @@
                 <button>Clear</button>
               </div>
               <div class="search-container">
-                <input
-                  type="text"
-                  id="search-input"
-                  placeholder="Search transactions..."
-                />
+                <input type="text" id="search-input" placeholder="Search..." />
                 <img src="images/magnifying-glass.png" alt="Search Icon" />
               </div>
             </div>
@@ -256,5 +276,6 @@
     <script src="javascript/transactions.js"></script>
     <script src="javascript/search.js"></script>
     <script src="javascript/badge.js"></script>
+    <script src="javascript/slideBar.js"></script>
   </body>
 </html>
