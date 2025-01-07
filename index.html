@@ -214,13 +214,15 @@
 
             <div class="transaction-section">
               <div class="transaction-top">
-                <p>Recent Transactions</p>
+                <p>Transactions</p>
                 <div class="date-range">
                   <input type="date" id="start-date" />
 
                   <input type="date" id="end-date" />
                   <button>Clear</button>
                 </div>
+                <button id="export-csv-btn">Export to CSV</button>
+
                 <div class="search-container">
                   <input
                     type="text"
@@ -294,5 +296,6 @@
     <script src="javascript/slideBar.js"></script>
     <script src="javascript/tabs.js"></script>
     <script src="javascript/dataStorage.js"></script>
+    <script src="javascript/csv.js"></script>
   </body>
 </html>

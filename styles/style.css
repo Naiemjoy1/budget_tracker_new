@@ -32,6 +32,7 @@ header {
   margin: 0;
   font-size: 15px;
 }
+
 .header-left p {
   margin: 0;
   font-size: 12px;
@@ -446,6 +447,13 @@ input#start-date,
 }
 
 .date-range button {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+button#export-csv-btn {
   padding: 8px 12px;
   border: 1px solid #ddd;
   border-radius: 5px;
