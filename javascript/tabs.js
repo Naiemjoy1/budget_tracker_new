@@ -1,3 +1,4 @@
+// tabs.js
 document.addEventListener("DOMContentLoaded", () => {
     const showContent = (id) => {
       const allContent = document.querySelectorAll(".tab-content");
@@ -9,9 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
     tabs.forEach((tab) => {
       tab.addEventListener("click", () => {
         const tabName = tab.textContent.trim().toLowerCase();
-        showContent(tabName); 
+        showContent(tabName);
         tabs.forEach((t) => t.classList.remove("active"));
-        tab.classList.add("active"); 
+        tab.classList.add("active");
       });
     });
   });

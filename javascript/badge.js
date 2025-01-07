@@ -8,6 +8,10 @@ function updateFinancialSummary(transactions) {
       netIncome += transaction.amount;
     } else if (transaction.type === 'expense') {
       totalExpenses += transaction.amount;
+    } else if (transaction.type === 'debt') {
+      netIncome += transaction.amount; 
+    } else if (transaction.type === 'investment') {
+      totalExpenses += transaction.amount; 
     }
   });
 

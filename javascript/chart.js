@@ -1,3 +1,4 @@
+// chart.js
 document.addEventListener("DOMContentLoaded", () => {
   const chartCategorySelect = document.getElementById("budget-category");
   const chartCanvas = document.getElementById("expense-chart");
@@ -146,11 +147,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (transaction.type === "investment") {
-          investmentData[dayIndex] += parseFloat(transaction.amount);
+          investmentData[dayIndex] += parseFloat(transaction.amount); 
+          expenseData[dayIndex] += parseFloat(transaction.amount);
         }
 
         if (transaction.type === "debt") {
-          debtData[dayIndex] += parseFloat(transaction.amount);
+          debtData[dayIndex] += parseFloat(transaction.amount); 
+          incomeData[dayIndex] += parseFloat(transaction.amount); 
         }
       }
     });

@@ -1,3 +1,4 @@
+//slidebar
 const hamburgerIcon = document.getElementById("hamburger-icon");
 const sidebar = document.getElementById("sidebar");
 const closeSidebar = document.querySelector(".close-sidebar");

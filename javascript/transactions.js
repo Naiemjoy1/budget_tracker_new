@@ -1,11 +1,12 @@
+// transactions.js
 document.addEventListener("DOMContentLoaded", () => {
   const addForm = document.getElementById("add-transaction-form");
   const editForm = document.getElementById("edit-transaction-form");
   const addDataModal = document.getElementById("add-data-modal");
   const editDataModal = document.getElementById("edit-data-modal");
-  let editingTransactionId = null;  
-  let currentBalance = 0;  
-  
+  let editingTransactionId = null;
+  let currentBalance = 0;
+
   const addDataBtn = document.getElementById("add-data-btn");
   addDataBtn.addEventListener("click", () => {
     addDataModal.style.display = "flex";
@@ -52,9 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (transactionData.type === "expense") {
       currentBalance -= amount;
     } else if (transactionData.type === "debt") {
-      currentBalance += amount; 
+      currentBalance += amount;
     } else if (transactionData.type === "investment") {
-      currentBalance -= amount;  
+      currentBalance -= amount;
     }
 
     let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
@@ -65,15 +66,13 @@ document.addEventListener("DOMContentLoaded", () => {
     updateFinancialSummary(transactions);
 
     addForm.reset();
-    addDataModal.style.display = "none";  
+    addDataModal.style.display = "none";
   });
 
-  
   document.querySelectorAll(".edit-btn").forEach((button) => {
     button.addEventListener("click", handleEditTransaction);
   });
 
-  
   const storedTransactions = JSON.parse(localStorage.getItem("transactions")) || [];
   updateTransactionTable(storedTransactions);
   updateFinancialSummary(storedTransactions);
@@ -158,8 +157,8 @@ document.addEventListener("DOMContentLoaded", () => {
       editForm["edit-status"].value = transactionToEdit.status;
       editForm["edit-type"].value = transactionToEdit.type;
 
-      editingTransactionId = transactionId;  
-      editDataModal.style.display = "flex";   
+      editingTransactionId = transactionId;
+      editDataModal.style.display = "flex";
     }
   }
 
@@ -172,39 +171,4 @@ document.addEventListener("DOMContentLoaded", () => {
     updateTransactionTable(transactions);
     updateFinancialSummary(transactions);
   }
-
- 
-  function updateFinancialSummary(transactions) {
-    let netIncome = 0;
-    let totalExpenses = 0;
-
-    transactions.forEach((transaction) => {
-      if (transaction.type === "income") {
-        netIncome += transaction.amount;
-      } else if (transaction.type === "expense") {
-        totalExpenses += transaction.amount;
-      } else if (transaction.type === "debt") {
-        netIncome += transaction.amount;  
-      } else if (transaction.type === "investment") {
-        totalExpenses += transaction.amount;  
-      }
-    });
-
-    let savings = netIncome - totalExpenses;
-
-    document.getElementById("net-income").querySelector("h4").textContent = `$${netIncome.toFixed(2)}`;
-    document.getElementById("total-expenses").querySelector("h4").textContent = `$${totalExpenses.toFixed(2)}`;
-    document.getElementById("savings").querySelector("h4").textContent = `$${savings.toFixed(2)}`;
-  }
-
-  const clearButton = document.querySelector(".date-range button");
-
-  clearButton.addEventListener("click", () => {
-    document.getElementById("start-date").value = "";
-    document.getElementById("end-date").value = "";
-
-    const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
-    updateTransactionTable(transactions);
-    updateFinancialSummary(transactions);
-  });
 });
