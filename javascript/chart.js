@@ -47,19 +47,19 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     options: {
       responsive: true,
-      maintainAspectRatio: false, // Allow dynamic resizing
+      maintainAspectRatio: false, 
       plugins: {
         legend: {
           position: "top",
           labels: {
             font: {
-              size: 10, // Adjust legend font size
+              size: 10,
             },
           },
         },
         tooltip: {
           bodyFont: {
-            size: 10, // Adjust tooltip font size
+            size: 10, 
           },
         },
       },
@@ -69,14 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
             display: true,
             text: "Date",
             font: {
-              size: 12, // Adjust font size for x-axis
+              size: 12, 
             },
           },
           ticks: {
             maxRotation: 45,
-            minRotation: 0, // Reduce rotation for smaller screens
+            minRotation: 0, 
             font: {
-              size: 10, // Adjust tick font size
+              size: 10, 
             },
           },
         },
@@ -85,13 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
             display: true,
             text: "Amount ($)",
             font: {
-              size: 12, // Adjust font size for y-axis
+              size: 12, 
             },
           },
           ticks: {
             beginAtZero: true,
             font: {
-              size: 10, // Adjust tick font size
+              size: 10, 
             },
           },
         },
